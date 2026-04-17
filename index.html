@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wordly Dictionary</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h1>📘 Wordly Dictionary</h1>
+      <button id="themeBtn" style="padding: 5px 10px;">🌙 Dark</button>
+    </div>
+
+    <form id="searchForm">
+      <input 
+        type="text" 
+        id="wordInput" 
+        placeholder="Search a word..." 
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="error"></div>
+    <div id="loading" style="display: none; color: #2d6cdf;">Loading...</div>
+
+    <div id="result" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 id="word"></h2>
+        <button id="favoriteBtn" class="fav-btn">❤️ Save</button>
+      </div>
+      <p id="phonetic"></p>
+      <div id="audioContainer"></div>
+      <div id="meaning"></div>
+      <div id="synonyms"></div>
+    </div>
+
+    <div id="favoritesSection" style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
+      <h3>⭐ Favorite Words <span id="favCount">(0)</span></h3>
+      <div id="favoritesList"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html> 
