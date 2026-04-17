@@ -26,7 +26,7 @@ const renderFavs = () => {
           <button onclick="removeFav('${f.word}')">X</button>
         </div>`
       ).join("")
-    : "<p>No favorites yet</p>";
+    : "<p>Favourite words have not been added yet</p>";
 };
 
 const toggleFav = () => {
@@ -39,7 +39,8 @@ const toggleFav = () => {
   favBtn.textContent = favs.find(f => f.word === currentWord) ? "Saved" : "Save";
 };
 
-/* API FETCH */
+// API is being fetched here
+
 async function fetchWord(word) {
   try {
     errorEl.textContent = "";
@@ -55,12 +56,11 @@ async function fetchWord(word) {
     wordEl.textContent = data.word;
     phoneticEl.textContent = data.phonetic || "";
 
-    /* AUDIO */
+    //  Audio checks
     const audio = data.phonetics.find(p => p.audio)?.audio;
     audioContainer.innerHTML = audio ? `<audio controls src="${audio}"></audio>` : "No audio";
 
-    meaningEl.innerHTML = data.meanings
-      .flatMap(m =>
+    meaningEl.innerHTML = data.meanings.flatMap(m =>
         m.definitions.map(d =>
           `<div class="meaning-item">
             <h3>${m.partOfSpeech}</h3>
@@ -71,7 +71,8 @@ async function fetchWord(word) {
       ).join("");
 
 
-// synonyms 
+// synonyms section
+
       const syns = [...new Set(
       data.meanings.flatMap(m =>
         m.definitions.flatMap(d => d.synonyms || [])
